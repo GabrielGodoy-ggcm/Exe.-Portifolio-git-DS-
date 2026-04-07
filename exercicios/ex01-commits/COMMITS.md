@@ -17,5 +17,4 @@
 ## Por que commits semânticos?
 
 Commits semânticos tornam o histórico do repositório legível como uma narrativa.
-Em vez de ver "ajustes" e "wip", qualquer pessoa consegue entender o que mudou,
-por que mudou e qual parte do projeto foi afetada — sem precisar abrir o código.
+

@@ -2,23 +2,17 @@
 #include <string>
 #include <vector>
 using namespace std; //fiz esse ai na AI mesmo, tava querendo pensar em uma branch diferenciada ai a IA me deu isso ai kk
-struct Jogador {    //esse vai ter um exe de conflito
+struct Jogador {
     std::string nome;
     int numero;
     std::string posicao;
     int gols;
 };
 
-void exibirJogador(Jogador j) {
-    std::cout << "[" << j.numero << "] " << j.nome
-              << " | " << j.posicao
-              << " | Gols: " << j.gols << std::endl;
-}
-
 void exibirElenco(std::vector<Jogador> elenco) {
-    std::cout << "\n===== SPORT — VERSÃO B =====" << std::endl;
+    std::cout << "NOME DO TIME: FLAMENGO" << std::endl;
     for (Jogador j : elenco) {
-        exibirJogador(j);
+        std::cout << j.nome << " | " << j.posicao << std::endl;
     }
 }
 

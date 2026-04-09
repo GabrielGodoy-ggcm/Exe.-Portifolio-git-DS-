@@ -5,27 +5,35 @@
 O conflito ocorreu no arquivo `projeto/hello-world/futebol.cpp`, na função
 `exibirElenco()`, na linha que exibe o nome do time. Duas branches criadas
 a partir do mesmo commit da main modificaram exatamente essa linha com
-conteúdos diferentes: `fix/conflito-a` definiu como "MENGÃO DO CORAÇÃO"
-e `fix/conflito-b` definiu como "MAIOR DO BRASIL". Quando a segunda branch
-foi mergeada na main, o Git apontou o seguinte erro:
-CONFLICT (content): Merge conflict in projeto/hello-world/futebol.cpp
-Automatic merge failed; fix conflicts and then commit the result.
+conteúdos diferentes: `feat/conflito-a` definiu como "Falso Campeão de 87"
+e `feat/conflito-b` definiu como "Urubu do Pix". Quando o PR da branch B
+foi aberto após o merge da branch A, o GitHub apontou conflito pois a main
+já tinha um conteúdo diferente naquela linha.
 
-O arquivo ficou marcado internamente assim:
+## Como o conflito apareceu
 
-std::cout << "NOME DO TIME: MENGÃO DO CORAÇÃO" << std::endl;
-std::cout << "NOME DO TIME: MAIOR DO BRASIL" << std::endl;
+O GitHub exibiu o aviso "This branch has conflicts that must be resolved"
+no PR da branch B. Ao clicar em "Resolve conflicts", o arquivo apareceu
+marcado assim:
+
+<<<<<<< feat/conflito-b
+std::cout << "NOME DO TIME: Urubu do Pix" << std::endl;
+std::cout << "NOME DO TIME: Falso Campeão de 87" << std::endl;
+
 ## Como decidi qual versão manter
 
-Optei por combinar as duas versões em uma terceira mensagem:
+Optei por descartar as duas versões e escrever uma terceira:
 
-std::cout << "NOME DO TIME: MENGÃO — MAIOR DO BRASIL" << std::endl;
+```cpp
+std::cout << "NOME DO TIME: Urubu do pix = falso campeao de 87" << std::endl;
+```
 
-## Comandos usados para marcar como resolvido
+Essa decisão deixa claro que a resolução foi feita de forma consciente,
+combinando o espírito das duas branches em uma mensagem final.
 
-Após editar o arquivo manualmente e remover os marcadores
-(`<<<<<<<`, `=======`, `>>>>>>>`), rodei:
-git add projeto/hello-world/futebol.cpp
-git commit -m "fix(futebol): resolve conflito entre slogan da branch A e brunch B"
+## Como foi marcado como resolvido
 
-O `git add` marca o arquivo como resolvido e o `git commit` finaliza o merge.
+Após editar o arquivo diretamente no editor de conflitos do GitHub,
+removi os marcadores `<<<<<<<`, `=======` e `>>>>>>>`, deixando apenas
+a linha final escolhida. Em seguida cliquei em **"Mark as resolved"**
+e depois em **"Commit merge"** para finalizar o merge do PR.

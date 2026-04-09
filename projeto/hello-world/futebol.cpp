@@ -10,7 +10,7 @@ struct Jogador {
 };
 
 void exibirElenco(std::vector<Jogador> elenco) {
-    std::cout << "NOME DO TIME: MENGÂO -- MAIOR DO BRASIL" << std::endl;
+    std::cout << "NOME DO TIME: Urubu do Pix" << std::endl;
     for (Jogador j : elenco) {
         std::cout << j.nome << " | " << j.posicao << std::endl;
     }
